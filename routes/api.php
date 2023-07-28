@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\TravelController;
+use App\Http\Controllers\Api\V1\TourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('currency')->group(function () {
-    Route::get('/', [\App\Http\Controllers\CurrencyController::class, "index"]);
-    Route::get('/{pair}', [\App\Http\Controllers\CurrencyController::class, "show"]);
-});
+//Route::prefix('v1')->group(function () {
+//    //
+//});
+
+Route::get('travels', [TravelController::class, "index"]);
+Route::get('travels/{travel:slug}/tours', [TourController::class, "index"]);
+
