@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-
 class CreateUserCommand extends Command
 {
     /**
@@ -32,7 +31,7 @@ class CreateUserCommand extends Command
 
         $role_name = $this->choice('Role of the new user', ['admin', 'editor'], 1);
         $role = Role::where(['name' => $role_name])->first();
-        if (!$role) {
+        if (! $role) {
             $this->error('Role not found');
 
             return -1;
@@ -41,7 +40,7 @@ class CreateUserCommand extends Command
         $validator = Validator::make($user, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
 
         if ($validator->fails()) {

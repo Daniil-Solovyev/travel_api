@@ -28,7 +28,6 @@ class Travel extends Model
         return $this->hasMany(Tour::class);
     }
 
-
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -39,7 +38,7 @@ class Travel extends Model
     public function numberOfNights(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => $attributes['number_of_days'] - 1
+            get: fn ($value, $attributes) => $attributes['number_of_days'] - 1
         );
     }
 }

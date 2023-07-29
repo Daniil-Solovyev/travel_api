@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Services\TestService;
 
 class TestController extends Controller
