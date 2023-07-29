@@ -26,6 +26,7 @@ Route::get('travels/{travel:slug}/tours', [TourController::class, "index"]);
 
 Route::prefix('admin')->middleware('role:admin')->group(function () {
     Route::post('travels', [AdminTravelController::class, "store"]);
+    Route::post('travels/{travel}', [AdminTravelController::class, "update"]);
 });
 
 Route::post('login', LoginController::class)->name('login');
